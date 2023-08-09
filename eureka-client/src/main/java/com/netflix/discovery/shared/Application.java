@@ -69,6 +69,7 @@ public class Application {
     @XStreamOmitField
     private volatile boolean isDirty = false;
 
+    // 所有的服务实例
     @XStreamImplicit
     private final Set<InstanceInfo> instances;
 

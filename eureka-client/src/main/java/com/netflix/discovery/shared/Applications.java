@@ -82,6 +82,8 @@ public class Applications {
 
     private String appsHashCode;
     private Long versionDelta;
+
+    // 应用信息
     @XStreamImplicit
     private final AbstractQueue<Application> applications;
     private final Map<String, Application> appNameApplicationMap;

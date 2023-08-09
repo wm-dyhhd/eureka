@@ -213,8 +213,10 @@ public class ApplicationInfoManager {
         }
         String newIp = config.getIpAddress();
 
+        // 服务地址不一样
         if (newAddress != null && !newAddress.equals(existingAddress)) {
             logger.warn("The address changed from : {} => {}", existingAddress, newAddress);
+            // 更新服务信息
             updateInstanceInfo(newAddress, newIp);
         }
 

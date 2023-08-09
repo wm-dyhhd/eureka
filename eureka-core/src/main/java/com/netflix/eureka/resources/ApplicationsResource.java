@@ -51,6 +51,7 @@ import com.netflix.eureka.util.EurekaMonitors;
  * @author Karthik Ranganathan, Greg Kim
  *
  */
+// 接受请求
 @Path("/{version}/apps")
 @Produces({"application/xml", "application/json"})
 public class ApplicationsResource {
@@ -121,6 +122,7 @@ public class ApplicationsResource {
                                   @Context UriInfo uriInfo,
                                   @Nullable @QueryParam("regions") String regionsStr) {
 
+        // 获取注册表
         boolean isRemoteRegionRequested = null != regionsStr && !regionsStr.isEmpty();
         String[] regions = null;
         if (!isRemoteRegionRequested) {
@@ -157,6 +159,7 @@ public class ApplicationsResource {
                     .header(HEADER_CONTENT_TYPE, returnMediaType)
                     .build();
         } else {
+            // 多级缓存中获取
             response = Response.ok(responseCache.get(cacheKey))
                     .build();
         }
@@ -201,6 +204,7 @@ public class ApplicationsResource {
             @HeaderParam(EurekaAccept.HTTP_X_EUREKA_ACCEPT) String eurekaAccept,
             @Context UriInfo uriInfo, @Nullable @QueryParam("regions") String regionsStr) {
 
+        // 增量获取
         boolean isRemoteRegionRequested = null != regionsStr && !regionsStr.isEmpty();
 
         // If the delta flag is disabled in discovery or if the lease expiration

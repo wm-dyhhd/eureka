@@ -108,6 +108,8 @@ public class InstanceResource {
             @QueryParam("overriddenstatus") String overriddenStatus,
             @QueryParam("status") String status,
             @QueryParam("lastDirtyTimestamp") String lastDirtyTimestamp) {
+
+        // 续约
         boolean isFromReplicaNode = "true".equals(isReplication);
         boolean isSuccess = registry.renew(app.getName(), id, isFromReplicaNode);
 
@@ -277,6 +279,7 @@ public class InstanceResource {
     @DELETE
     public Response cancelLease(
             @HeaderParam(PeerEurekaNode.HEADER_REPLICATION) String isReplication) {
+        // 取消租约
         try {
             boolean isSuccess = registry.cancel(app.getName(), id,
                 "true".equals(isReplication));

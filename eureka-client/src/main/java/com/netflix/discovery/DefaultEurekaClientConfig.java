@@ -74,10 +74,12 @@ public class DefaultEurekaClientConfig implements EurekaClientConfig {
     }
 
     public DefaultEurekaClientConfig(String namespace) {
+        // 命名空间 eureka
         this.namespace = namespace.endsWith(".")
                 ? namespace
                 : namespace + ".";
 
+        // 获取 eureka-client 配置文件
         this.configInstance = Archaius1Utils.initConfig(CommonConstants.CONFIG_FILE_NAME);
         this.transportConfig = new DefaultEurekaTransportConfig(namespace, configInstance);
     }

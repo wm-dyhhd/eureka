@@ -4,23 +4,39 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <!--
+    web 应用启动的时候执行，负责 web 应用的初始化
+  -->
   <listener>
     <listener-class>com.netflix.eureka.Jersey3EurekaBootStrap</listener-class>
   </listener>
 
+  <!--
+    负责状态相关的处理逻辑
+  -->
   <filter>
     <filter-name>statusFilter</filter-name>
     <filter-class>com.netflix.eureka.StatusFilter</filter-class>
   </filter>
 
+  <!--
+  请求认证
+  -->
   <filter>
     <filter-name>requestAuthFilter</filter-name>
     <filter-class>com.netflix.eureka.ServerRequestAuthFilter</filter-class>
   </filter>
+  <!--
+    限流
+  -->
   <filter>
     <filter-name>rateLimitingFilter</filter-name>
     <filter-class>com.netflix.eureka.RateLimitingFilter</filter-class>
   </filter>
+  <!--
+    压缩，编码 相关
+  -->
   <filter>
     <filter-name>gzipEncodingEnforcingFilter</filter-name>
     <filter-class>com.netflix.eureka.GzipEncodingEnforcingFilter</filter-class>

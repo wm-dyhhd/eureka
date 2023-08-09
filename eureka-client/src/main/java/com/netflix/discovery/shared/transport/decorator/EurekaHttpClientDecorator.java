@@ -49,6 +49,7 @@ public abstract class EurekaHttpClientDecorator implements EurekaHttpClient {
         RequestType getRequestType();
     }
 
+    // SessionedEurekaHttpClient
     protected abstract <R> EurekaHttpResponse<R> execute(RequestExecutor<R> requestExecutor);
 
     @Override
